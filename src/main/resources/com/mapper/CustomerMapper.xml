@@ -15,17 +15,13 @@
 		<result property="Password" column="password" />
 	</resultMap>
 	
-	<!-- 
 	<resultMap id="Restaurant" type="Restaurant">
 		<result property="RestID" column="RestID" />
 		<result property = "RName" column="RName" />
+		<result property = "phone" column="phone"/>
+		<result property = "email" column="email"/>
 	</resultMap>
 	
-	<select id="selectRName" parameterType="Restaurant">
-		SELECT restid, rname FROM RESTAURANT;
-	</select>
-	
-	 -->
 	
 	<select id="selectCustomer" resultMap="Customer">
 		SELECT fname, lname, email, streetno, streetname, city, state, zip, phone, password FROM RESTAURANT_CUSTOMER WHERE email = #{email}
@@ -35,5 +31,8 @@
 		INSERT INTO RESTAURANT_CUSTOMER (fname, lname, email, streetno, streetname, city, state, zip, phone, password) VALUES (#{FName},#{LName},#{Email},#{StreetNo},#{Street},#{City},#{State},#{Zip},#{Phone},#{Password})
 	</insert>	
 	
-	
+	<select id="selectRestaurant" resultMap="Restaurant">
+		SELECT restid, rname, email, phone FROM RESTAURANT
+	</select>
+		
 </mapper>

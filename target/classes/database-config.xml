@@ -5,6 +5,7 @@
 <configuration>
 <typeAliases>
   <typeAlias alias="Customer" type="com.myspring.app.model.Customer"/>
+  <typeAlias alias="Restaurant" type="com.myspring.app.model.Restaurant"/>
 </typeAliases>
 	<environments default="development">
 		<environment id="development">
