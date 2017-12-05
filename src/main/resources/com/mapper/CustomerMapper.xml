@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CustomerMapper">
+	
+	<resultMap id="Customer" type="Customer">
+		<id property="Email" column="email" />
+		<result property="FName" column="fname" />
+		<result property="LName" column="lname" />
+		<result property="StreetNo" column="streetno" />
+		<result property="Street" column="streetname" />
+		<result property="City" column="city" />
+		<result property="State" column="state" />
+		<result property="Zip" column="zip" />
+		<result property="Phone" column="phone" />
+		<result property="Password" column="password" />
+	</resultMap>
+	
+	<!-- 
+	<resultMap id="Restaurant" type="Restaurant">
+		<result property="RestID" column="RestID" />
+		<result property = "RName" column="RName" />
+	</resultMap>
+	
+	<select id="selectRName" parameterType="Restaurant">
+		SELECT restid, rname FROM RESTAURANT;
+	</select>
+	
+	 -->
+	
+	<select id="selectCustomer" resultMap="Customer">
+		SELECT fname, lname, email, streetno, streetname, city, state, zip, phone, password FROM RESTAURANT_CUSTOMER WHERE email = #{email}
+	</select>
+	
+	<insert id="insertCustomer" parameterType="Customer">
+		INSERT INTO RESTAURANT_CUSTOMER (fname, lname, email, streetno, streetname, city, state, zip, phone, password) VALUES (#{FName},#{LName},#{Email},#{StreetNo},#{Street},#{City},#{State},#{Zip},#{Phone},#{Password})
+	</insert>	
+	
+	
+</mapper>
