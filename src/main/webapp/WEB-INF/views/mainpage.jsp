@@ -13,7 +13,7 @@
 	<button class="tablinks" onclick="restaurant.jsp">Restaurants</button>
 	<button class="tablinks">Reviews</button>
 	<button class="tablinks">Orders</button>
-	<a href=""><button class="tablinks">Logout</button></a>
+	<a href="/app"><button class="tablinks">Logout</button></a>
 </div>
 
 <h4>To transfer control to a view using a new controller file, click <a href="/app/restaurantList">here</a>.</h4>
