@@ -7,6 +7,6 @@
 <title></title>
 </head>
 <body>
-
+Welcome to the restaurant
 </body>
 </html>

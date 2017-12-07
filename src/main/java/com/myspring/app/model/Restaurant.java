@@ -25,6 +25,8 @@ public class Restaurant {
 		super();
 		RestID = 0;
 		RName = "";
+		email = "";
+		phone = "";
 	}
 	public String getPhone() {
 		return phone;

@@ -12,7 +12,7 @@ public class RestaurantService {
 		
 	}
 	
-	public ArrayList<Restaurant> getResturantNames() {
+	public ArrayList<Restaurant> getResturants() {
 		List<Restaurant> restaurants = new ArrayList<Restaurant>();
 		restaurantDao rd = new restaurantDao();
 		restaurants = rd.getRestaurants();

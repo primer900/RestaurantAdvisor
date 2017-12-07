@@ -8,11 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Restaurant List:</h1>
+<h1>Review Restaurant</h1>
+
 <c:forEach var="r" items="${rlist}">
-   <c:out value="${r.getRName()}"/><h3>
-   <c:out value="${r.getEmail() }"/><h5>
-   <c:out value="${r.getPhone() }"/><h5>
+   <a href="/app/NewReview"><c:out value="${r.getRName()}"/><h3></a>
 </c:forEach>
 </body>
 </html>

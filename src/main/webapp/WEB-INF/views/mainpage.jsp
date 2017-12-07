@@ -7,15 +7,14 @@
 <title>Restaurant Advisor System</title>
 </head>
 <body>
-<h2>Welcome to this page ${customer.getFName()}!</h2>
+<h2>Welcome to Restaurant Advisor ${customer.getFName()}!</h2>
 <div class="tab">
 	<button class="tablinks">Home</button>
-	<button class="tablinks" onclick="restaurant.jsp">Restaurants</button>
-	<button class="tablinks">Reviews</button>
+	<a href="/app/restaurantList"><button class="tablinks" >Restaurants</button></a>
+	<a href="/app/review"><button class="tablinks">Reviews</button></a>
 	<button class="tablinks">Orders</button>
 	<a href="/app"><button class="tablinks">Logout</button></a>
 </div>
 
-<h4>To transfer control to a view using a new controller file, click <a href="/app/restaurantList">here</a>.</h4>
 </body>
 </html>

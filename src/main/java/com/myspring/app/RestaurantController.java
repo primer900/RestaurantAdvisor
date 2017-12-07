@@ -33,10 +33,13 @@ public class RestaurantController {
 		logger.info("Now in real RestaurantController file");
 		RestaurantService rs = new RestaurantService();
 		rlist = new ArrayList<Restaurant>();
-		rlist = rs.getResturantNames();
+		rlist = rs.getResturants();
 		model.addAttribute("rlist", rlist);
 		return "restaurantlist";
 	}
 	
-	
+	@RequestMapping(value = "restaurant", method = RequestMethod.GET)
+	public String restaurant(@ModelAttribute("restaurant") Restaurant restaurant, Model model) {
+		return "restaurant";
+	}
 }

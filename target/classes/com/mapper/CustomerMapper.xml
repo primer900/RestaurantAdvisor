@@ -23,6 +23,17 @@
 	</resultMap>
 	
 	
+	<resultMap id="Review" type="Review">
+		<id property="ReviewID" column="ReviewID"/>
+		<result property="custEmail" column="custEmail"/>
+		<result property="RestID" column="RestID"/>
+		<result property="ReviewTitle" column="ReviewTitle"/>
+		<result property="ReviewDescr" column="ReviewDescr"/>
+		<result property="ReviewDate" column="ReviewDate"/>
+		<result property="Rating" column="Rating"/>
+	</resultMap>
+	
+	
 	<select id="selectCustomer" resultMap="Customer">
 		SELECT fname, lname, email, streetno, streetname, city, state, zip, phone, password FROM RESTAURANT_CUSTOMER WHERE email = #{email}
 	</select>
@@ -34,5 +45,10 @@
 	<select id="selectRestaurant" resultMap="Restaurant">
 		SELECT restid, rname, email, phone FROM RESTAURANT
 	</select>
-		
-</mapper>
+	
+	
+	<insert id="insertReview" parameterType="Review">
+		INSERT INTO CUST_REVIEW (custEmail, RestID, ReviewTitle, ReviewDescr, ReviewDate, Rating) VALUES (#{custEmail},#{RestID},#{ReviewTitle},#{ReviewDescr},#{ReviewDate},#{Rating})
+	</insert>	
+	
+	</mapper>
