@@ -20,10 +20,14 @@
 	</style>
 </head>
 <body>
-	<h1>Review ${restaurant.getRName() }</h1>
+	<h1>Review </h1>
 	<div class="inputform">
-	<form:form method="POST" action="InsertReview" modelAttribute="Review">
+	<form:form method="POST" action="InsertReview" modelAttribute="review">
 	     <table>
+	     	<tr>
+	     		<td><h2>Restaurant ID</h2></td>
+	     		<td><form:input path="RestID" class="mytext300"/></td>
+	     	</tr>
 	        <tr>
 	            <td><h2>Title</h2></td>
 	            <td><form:input path="ReviewTitle" class="mytext300"/></td>
@@ -32,9 +36,15 @@
 	            <td><h2>Description</h2></td>
 	            <td><form:input path="ReviewDescr" class="mytext300"/></td>
 	        </tr>
+	        
 	        <tr>
-	        <td><h2>Rating</h2></td>
-	        <td><form:input path="Rating" class="mytext300"/><td/></tr>
+	        	<td><h2>Customer Email</h2></td>
+	        	<td><form:input path="custEmail" class="mytext300"/></td>
+	        </tr>
+	        
+	        <tr>
+	        	<td><h2>Rating</h2></td>
+	        	<td><form:input path="Rating" class="mytext300"/><td/></tr>
 	        <tr>
 	            <td></td>
 	            <td><input type="submit" value="Submit"/>&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear"/></td>

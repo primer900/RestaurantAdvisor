@@ -4,24 +4,29 @@ import java.sql.Date;
 
 public class Review {
 	private int ReviewID;
-	//private String CustEmail;
+	private String CustEmail;
 	private int RestID;
 	private String ReviewTitle;
 	private String ReviewDescr;
-	//private Date ReviewDate;
+	private Date ReviewDate;
 	private int Rating;
+	
 	public int getRating() {
 		return Rating;
 	}
+	
 	public void setRating(int rating) {
 		Rating = rating;
 	}
-	/*public Date getReviewDate() {
+	
+	public Date getReviewDate() {
 		return ReviewDate;
 	}
+	
 	public void setReviewDate(Date reviewDate) {
 		ReviewDate = reviewDate;
-	}*/
+	}
+	
 	public String getReviewDescr() {
 		return ReviewDescr;
 	}
@@ -40,12 +45,14 @@ public class Review {
 	public void setRestID(int restID) {
 		RestID = restID;
 	}
-	/*public String getCustEmail() {
+	
+	public String getCustEmail() {
 		return CustEmail;
 	}
 	public void setCustEmail(String custEmail) {
 		CustEmail = custEmail;
-	}*/
+	}
+	
 	public int getReviewID() {
 		return ReviewID;
 	}

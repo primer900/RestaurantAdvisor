@@ -48,7 +48,7 @@
 	
 	
 	<insert id="insertReview" parameterType="Review">
-		INSERT INTO CUST_REVIEW (custEmail, RestID, ReviewTitle, ReviewDescr, ReviewDate, Rating) VALUES (#{custEmail},#{RestID},#{ReviewTitle},#{ReviewDescr},#{ReviewDate},#{Rating})
+		INSERT INTO CUST_REVIEW (ReviewID, custEmail, RestID, ReviewTitle, ReviewDescr, ReviewDate, Rating) VALUES (#{ReviewID},#{custEmail},#{RestID},#{ReviewTitle},#{ReviewDescr},#{ReviewDate},#{Rating})
 	</insert>	
 	
 	</mapper>
