@@ -1,7 +1,10 @@
 package com.myspring.app;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 import java.sql.Date;
 
@@ -39,11 +42,16 @@ public class ReviewController {
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "InsertReview", method = RequestMethod.POST)
 	public String insertReview(@ModelAttribute("review") Review review, Model model) {
 		Random random = new Random();
 		int n = random.nextInt(100) + 4;
-		review.setReviewDate(new Date(0));
+		
+		java.util.Date date = new java.util.Date();
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		review.setReviewDate(new java.sql.Date(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth()));
+		
 		review.setReviewID(12000 + n);
 		
 		int result = reviewService.InsertReview(review);
@@ -51,7 +59,7 @@ public class ReviewController {
 		if (result == 0) {
 			JOptionPane.showMessageDialog(null, "Error adding customer information!", "Error", JOptionPane.ERROR_MESSAGE);
 		}
-
+			model.addAttribute(new Restaurant());
 			return "mainpage";
 	}
 }

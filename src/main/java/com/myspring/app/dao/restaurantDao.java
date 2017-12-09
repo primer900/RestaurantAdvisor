@@ -26,4 +26,18 @@ public class restaurantDao {
 		}
 		return restaurants;
 	}
+	
+	public List<Restaurant> searchForRestaurant(String restaurantName) {
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		List<Restaurant> restaurant = new ArrayList<Restaurant>();
+		
+		try {
+			restaurant = session.selectList("com.mapper.CustomerMapper.getRestaurantDetails", restaurantName);
+		}
+		finally {
+			session.close();
+		}
+		
+		return restaurant;
+	}
 }

@@ -31,4 +31,14 @@ public class RestaurantService {
 
 		return null;
 	}
+	
+	public Restaurant getRestaurantDetails(String RName) {
+		List<Restaurant> restaurant = rd.searchForRestaurant(RName);
+		
+		if(restaurant.get(0).getRName().equals(RName))
+			return restaurant.get(0);
+		
+		return null;
+	}
+	
 }

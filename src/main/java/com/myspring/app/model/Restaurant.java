@@ -8,6 +8,9 @@ public class Restaurant {
 	private String RName;
 	private String phone;
 	private String email;
+	private String diningType;
+	private String priceRange;
+	
 	public int getRestID() {
 		return RestID;
 	}
@@ -39,5 +42,17 @@ public class Restaurant {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getDiningType() {
+		return diningType;
+	}
+	public void setDiningType(String diningType) {
+		this.diningType = diningType;
+	}
+	public String getPriceRange() {
+		return priceRange;
+	}
+	public void setPriceRange(String priceRange) {
+		this.priceRange = priceRange;
 	}
 }

@@ -22,7 +22,7 @@ import com.myspring.app.service.RestaurantService;
 @Controller
 public class RestaurantController {
 	
-
+	private RestaurantService rs = new RestaurantService();
 	private static final Logger logger = LoggerFactory.getLogger(RestaurantController.class);
 	
 	/**
@@ -31,7 +31,6 @@ public class RestaurantController {
 	@RequestMapping(value = "/restaurantList", method = RequestMethod.GET)
 	public String restaurantList(@ModelAttribute("rlist") ArrayList<Restaurant> rlist, Model model) {
 		logger.info("Now in real RestaurantController file");
-		RestaurantService rs = new RestaurantService();
 		rlist = new ArrayList<Restaurant>();
 		rlist = rs.getResturants();
 		model.addAttribute("rlist", rlist);
@@ -41,5 +40,14 @@ public class RestaurantController {
 	@RequestMapping(value = "restaurant", method = RequestMethod.GET)
 	public String restaurant(@ModelAttribute("restaurant") Restaurant restaurant, Model model) {
 		return "restaurant";
+	}
+	
+	@RequestMapping(value = "SearchRestaurant", method = RequestMethod.GET)
+	public String searchForRestaurant(@ModelAttribute("restaurant") Restaurant restaurant, Model model) {
+		Restaurant restaurantFound = rs.getRestaurantDetails(restaurant.getRName());
+		
+		
+		model.addAttribute("restaurant", restaurantFound);
+		return "restaurantSearch";
 	}
 }

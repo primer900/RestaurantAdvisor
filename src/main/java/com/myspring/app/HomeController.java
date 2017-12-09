@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.myspring.app.model.Customer;
+import com.myspring.app.model.Restaurant;
 import com.myspring.app.service.CustomerService;
 
 /**
@@ -34,14 +35,14 @@ public class HomeController {
 		return "home";
 	}
 	
-	
 	@RequestMapping(value = "checkLogin", method = RequestMethod.POST)
-	public String checkLogin(@ModelAttribute("customer")Customer customer, Model model) {
+	public String checkLogin(@ModelAttribute("customer")Customer customer, @ModelAttribute("restaurant") Restaurant restaurant,  Model model) {
 		logger.info("Login Information : " + customer.getEmail() + ", " + customer.getPassword());
 		String address;
 		CustomerService cs = new CustomerService();
 		if (cs.checkCustomer(customer.getEmail(), customer.getPassword())) {
 			model.addAttribute(cs.getCustomer(customer.getEmail(), customer.getPassword()));
+			model.addAttribute("restaurant", new Restaurant());
 			address = "mainpage";
 		} else {
 			JOptionPane.showMessageDialog(null, "Incorrect Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);			
@@ -49,8 +50,6 @@ public class HomeController {
 		}
 		return address;
 	}	
-	
-	
 	
 	@RequestMapping(value = "newSignIn", method = RequestMethod.GET)
 	public String newSignIn(Model model) {
