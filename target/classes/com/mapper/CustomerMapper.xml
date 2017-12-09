@@ -21,6 +21,9 @@
 		<result property = "phone" column="phone"/>
 		<result property = "email" column="email"/>
 		<result property = "diningType" column="diningType" />
+		<result property = "streetNo" column = "streetNo" />
+		<result property = "streetName" column = "streetName" />
+		<result property = "city" column = "city" />
 	</resultMap>
 	
 	
@@ -33,6 +36,13 @@
 		<result property="ReviewDate" column="ReviewDate"/>
 		<result property="Rating" column="Rating"/>
 		<result property="priceRange" column="priceRange" />
+		<result property="deliveryFlag" column="deliveryFlag"/>
+	</resultMap>
+	
+	<resultMap id="MenuItem" type="MenuItem">
+		<result property="RestID" column="RestID"/>
+		<result property="FoodName" column="FoodName"/>
+		<result property="Price" column="Price"/>
 	</resultMap>
 	
 	
@@ -45,16 +55,19 @@
 	</insert>	
 	
 	<select id="selectRestaurant" resultMap="Restaurant">
-		SELECT restid, rname, email, phone, diningtype FROM RESTAURANT
+		SELECT restid, rname, email, phone, streetno, streetname, city FROM RESTAURANT
 	</select>
 	
 	<select id="getRestaurantDetails" resultMap="Restaurant">
 		SELECT RName, Phone, Email, hours, diningtype, streetno, streetname, city, state, pricerange, deliveryflag from RESTAURANT WHERE RName = #{RName}
 	</select>
 	 
-	
 	<insert id="insertReview" parameterType="Review">
 		INSERT INTO CUST_REVIEW (ReviewID, custEmail, RestID, ReviewTitle, ReviewDescr, ReviewDate, Rating) VALUES (#{ReviewID},#{custEmail},#{RestID},#{ReviewTitle},#{ReviewDescr},#{ReviewDate},#{Rating})
 	</insert>	
+	
+	<select id="selectMenuItems" resultMap="MenuItem">
+	SELECT foodName, price FROM MENU where restID = #{RestID}
+	</select>
 	
 	</mapper>

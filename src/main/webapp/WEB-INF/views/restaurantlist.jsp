@@ -11,9 +11,9 @@
 <h1>Restaurant List:</h1>
 <c:forEach var="r" items="${rlist}">
    <c:out value="${r.getRName()}"/><h3>
+   <c:out value="${r.getCity() }"/></h3>
    <c:out value="${r.getEmail() }"/><h5>
    <c:out value="${r.getPhone() }"/><h5>
-   <c:out value="${r.getDiningType() }"/></h5>
 </c:forEach>
 </body>
 </html>

@@ -29,7 +29,7 @@
 	<button class="tablinks">Home</button>
 	<a href="/app/restaurantList"><button class="tablinks" >Restaurants</button></a>
 	<a href="/app/review"><button class="tablinks">Reviews</button></a>
-	<button class="tablinks">Orders</button>
+	<a href="/app/restaurantOrderList"><button class="tablinks">Orders</button></a>
 	<a href="/app"><button class="tablinks">Logout</button></a>
 </div>
 

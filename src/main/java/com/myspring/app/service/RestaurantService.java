@@ -41,4 +41,14 @@ public class RestaurantService {
 		return null;
 	}
 	
+	public Restaurant getRestaurantByRestID(int RestID) {
+		List<Restaurant> restaurant = rd.getRestaurants();
+		
+		for(Restaurant r : restaurant)
+			if(r.getRestID() == RestID)
+				return r;
+		
+		return new Restaurant();
+	}
+	
 }

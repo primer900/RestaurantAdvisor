@@ -40,4 +40,18 @@ public class restaurantDao {
 		
 		return restaurant;
 	}
+	
+	public List<Restaurant> getRestaurantByRestID(int RestID) {
+		SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession();
+		List<Restaurant> restaurant = new ArrayList<Restaurant>();
+		
+		try {
+			restaurant = session.selectList("com.mapper.CustomerMapper.getRestaurantByRestID", RestID);
+		}
+		finally {
+			session.close();
+		}
+		
+		return restaurant;
+	}
 }

@@ -46,6 +46,10 @@ public class RestaurantController {
 	public String searchForRestaurant(@ModelAttribute("restaurant") Restaurant restaurant, Model model) {
 		Restaurant restaurantFound = rs.getRestaurantDetails(restaurant.getRName());
 		
+		if(restaurantFound.getDeliveryFlag().equals("Y"))
+			restaurantFound.setDeliveryFlag("They Deliver");
+		else
+			restaurant.setDeliveryFlag("They do not Deliver");
 		
 		model.addAttribute("restaurant", restaurantFound);
 		return "restaurantSearch";

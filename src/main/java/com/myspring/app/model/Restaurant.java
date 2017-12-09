@@ -10,6 +10,10 @@ public class Restaurant {
 	private String email;
 	private String diningType;
 	private String priceRange;
+	private String deliveryFlag;
+	private String streetNo;
+	private String streetName;
+	private String city;
 	
 	public int getRestID() {
 		return RestID;
@@ -54,5 +58,29 @@ public class Restaurant {
 	}
 	public void setPriceRange(String priceRange) {
 		this.priceRange = priceRange;
+	}
+	public String getDeliveryFlag() {
+		return deliveryFlag;
+	}
+	public void setDeliveryFlag(String deliveryFlag) {
+		this.deliveryFlag = deliveryFlag;
+	}
+	public String getStreetNo() {
+		return streetNo;
+	}
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
+	public String getStreetName() {
+		return streetName;
+	}
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
 	}
 }
