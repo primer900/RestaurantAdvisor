@@ -45,6 +45,22 @@
 		<result property="Price" column="Price"/>
 	</resultMap>
 	
+	<resultMap id="Order" type="Order">
+		<result property="RestID" column="RestID"/>
+		<result property="Ono" column="Ono"/>
+		<result property="Qty" column="qty"/>
+		<result property="Option" column="Option" />
+	</resultMap>
+	
+	<resultMap id="RestaurantOrder" type="RestaurantOrder">
+		<result property="Ono" column="Ono"/>
+		<result property="OrderDate" column="OrderDate" />
+		<result property="custEmail" column="custEmail"/>
+		<result property="OrderDineInFlag" column="OrderDineInFlag"/>
+		<result property="OrderDeliveryFlag" column="OrderDeliveryFlag"/>
+		<result property="OrderPickUpFlag" column="OrderPickUpFlag" />
+	</resultMap>
+	
 	
 	<select id="selectCustomer" resultMap="Customer">
 		SELECT fname, lname, email, streetno, streetname, city, state, zip, phone, password FROM RESTAURANT_CUSTOMER WHERE email = #{email}
@@ -67,7 +83,22 @@
 	</insert>	
 	
 	<select id="selectMenuItems" resultMap="MenuItem">
-	SELECT foodName, price FROM MENU where restID = #{RestID}
+		SELECT foodName, price FROM MENU where restID = #{RestID}
 	</select>
+	
+	<insert id="InsertRestaurantOrder" parameterType="RestaurantOrder">
+		INSERT INTO RESTAURANT_ORDER (Ono, OrderDate, CustEmail, OrderDineInFlag, OrderDeliveryFlag, OrderPickUpFlag) 
+		VALUES (
+		#{Ono},
+		#{OrderDate},
+		#{CustEmail},
+		#{OrderDineInFlag},
+		#{OrderDeliveryFlag},
+		#{OrderPickUpFlag})
+	</insert>
+	
+	<insert id="InsertOrder" parameterType="Order">
+		INSERT INTO RESTAURANT_ODETAILS (Ono, FoodName, RestID,Qty) VALUES (#{Ono}, #{FoodName}, #{RestID}, #{Qty})
+	</insert>
 	
 	</mapper>

@@ -8,6 +8,8 @@
   <typeAlias alias="Restaurant" type="com.myspring.app.model.Restaurant"/>
   <typeAlias alias="Review" type="com.myspring.app.model.Review"/>
   <typeAlias alias="MenuItem" type="com.myspring.app.model.MenuItem"/>
+  <typeAlias alias="Order" type="com.myspring.app.model.Order"/>
+  <typeAlias alias="RestaurantOrder" type="com.myspring.app.model.RestaurantOrder" />
 </typeAliases>
 	<environments default="development">
 		<environment id="development">

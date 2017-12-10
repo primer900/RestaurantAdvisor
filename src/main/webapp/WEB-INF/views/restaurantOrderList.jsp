@@ -11,6 +11,15 @@
 <body>
 <body>
 <h1>Restaurant List:</h1>
+
+<div class="tab">
+	<button class="tablinks">Home</button>
+	<a href="/app/restaurantList"><button class="tablinks" >Restaurants</button></a>
+	<a href="/app/review"><button class="tablinks">Reviews</button></a>
+	<a href="/app/restaurantOrderList"><button class="tablinks">Orders</button></a>
+	<a href="/app"><button class="tablinks">Logout</button></a>
+</div>
+
 <c:forEach var="r" items="${rlist}">
    <a href="/app/restaurantMenuOrder?restID=${r.getRestID() }"><c:out value="${r.getRName()}"/><h3></a>
 </c:forEach>
