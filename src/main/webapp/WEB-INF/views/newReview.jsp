@@ -23,7 +23,7 @@
 	<h1>Review </h1>
 	
 	<div class="tab">
-		<button class="tablinks">Home</button>
+		<a href="/app/getLogin"><button class="tablinks">Home</button></a>
 		<a href="/app/restaurantList"><button class="tablinks" >Restaurants</button></a>
 		<a href="/app/review"><button class="tablinks">Reviews</button></a>
 		<a href="/app/restaurantOrderList"><button class="tablinks">Orders</button></a>
@@ -40,11 +40,6 @@
 	        <tr>
 	            <td><h2>Description</h2></td>
 	            <td><form:input path="ReviewDescr" class="mytext300"/></td>
-	        </tr>
-	        
-	        <tr>
-	        	<td><h2>Customer Email</h2></td>
-	        	<td><form:input path="custEmail" class="mytext300"/></td>
 	        </tr>
 	        
 	        <tr>

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.myspring.app.model.Customer;
 import com.myspring.app.model.MenuItem;
 import com.myspring.app.model.Order;
 import com.myspring.app.model.Restaurant;
@@ -27,6 +29,8 @@ import com.myspring.app.service.RestaurantService;
 import com.myspring.app.service.ReviewService;
 
 @Controller
+@SessionAttributes("customer")
+
 public class ReviewController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
@@ -35,11 +39,11 @@ public class ReviewController {
 	private int RestIDRequiredForReview;
 	
 	@RequestMapping(value = "/restaurantReviewList", method = RequestMethod.GET)
-	public String newReview(@ModelAttribute("review") Review review,
+	public String newReview(
+			@ModelAttribute("review") Review review,
 			@ModelAttribute("rlist") ArrayList<Restaurant> rlist,
 			Model model) {
 		
-		logger.info("In newReview");
 		Review r = new Review();
 		model.addAttribute("review", r);
 		
@@ -67,6 +71,7 @@ public class ReviewController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "InsertReview", method = RequestMethod.POST)
 	public String insertReview(
+			@ModelAttribute("customer") Customer customer,
 			@ModelAttribute("review") Review review,
 			Model model) {
 		
@@ -79,6 +84,9 @@ public class ReviewController {
 		review.setRestID(RestIDRequiredForReview);
 		review.setReviewID(12000 + n);
 		logger.info(review.getRestID() + ", " + review.getReviewID());
+		
+		logger.info("Cust Email " + customer.getEmail());
+		review.setCustEmail(customer.getEmail());
 		
 		int result = reviewService.InsertReview(review);
 		
