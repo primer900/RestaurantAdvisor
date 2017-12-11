@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Restaurants in Your Area</title>
+<title>Restaurants to Review</title>
 </head>
 <body>
 <body>
@@ -21,7 +21,7 @@
 </div>
 
 <c:forEach var="r" items="${rlist}">
-   <a href="/app/restaurantMenuOrder?restID=${r.getRestID() }"><c:out value="${r.getRName()}"/><h3></a>
+   <a href="/app/restaurantReview?restID=${r.getRestID() }"><c:out value="${r.getRName()}"/><h3></a>
 </c:forEach>
 </body>
 </html>

@@ -33,10 +33,6 @@
 	<div class="inputform">
 	<form:form method="POST" action="InsertReview" modelAttribute="review">
 	     <table>
-	     	<tr>
-	     		<td><h2>Restaurant ID</h2></td>
-	     		<td><form:input path="RestID" class="mytext300"/></td>
-	     	</tr>
 	        <tr>
 	            <td><h2>Title</h2></td>
 	            <td><form:input path="ReviewTitle" class="mytext300"/></td>

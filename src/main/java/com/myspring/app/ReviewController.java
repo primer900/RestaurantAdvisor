@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.myspring.app.model.MenuItem;
+import com.myspring.app.model.Order;
 import com.myspring.app.model.Restaurant;
 import com.myspring.app.model.Review;
 import com.myspring.app.service.RestaurantService;
@@ -30,29 +32,53 @@ public class ReviewController {
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	private RestaurantService rs = new RestaurantService();
 	private ReviewService reviewService = new ReviewService();
+	private int RestIDRequiredForReview;
 	
-	@RequestMapping(value = "/review", method = RequestMethod.GET)
-	public String newReview(@ModelAttribute("review") Review review, Model model) {
+	@RequestMapping(value = "/restaurantReviewList", method = RequestMethod.GET)
+	public String newReview(@ModelAttribute("review") Review review,
+			@ModelAttribute("rlist") ArrayList<Restaurant> rlist,
+			Model model) {
+		
 		logger.info("In newReview");
 		Review r = new Review();
 		model.addAttribute("review", r);
+		
+		rlist = rs.getResturants();
+		model.addAttribute("rlist", rlist);
+		
 
+		
+		return "restaurantReviewList";
+	}
+	
+	@RequestMapping(value = "restaurantReview", method = RequestMethod.GET)
+	public String restaurantReview(
+			@RequestParam("restID") int restID,
+			@ModelAttribute("Restaurant") Restaurant r,
+			@ModelAttribute("MenuItems") ArrayList<MenuItem> menuItems,
+			@ModelAttribute("review") Review review,
+			Model model) {
+	
+		RestIDRequiredForReview = restID;
 		
 		return "newReview";
 	}
 	
-	
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "InsertReview", method = RequestMethod.POST)
-	public String insertReview(@ModelAttribute("review") Review review, Model model) {
-		Random random = new Random();
-		int n = random.nextInt(100) + 4;
+	public String insertReview(
+			@ModelAttribute("review") Review review,
+			Model model) {
 		
-		java.util.Date date = new java.util.Date();
-		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int n = ReviewID();
+		
+		LocalDate localDate = GetCurrentDate(); 
+		
 		review.setReviewDate(new java.sql.Date(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth()));
 		
+		review.setRestID(RestIDRequiredForReview);
 		review.setReviewID(12000 + n);
+		logger.info(review.getRestID() + ", " + review.getReviewID());
 		
 		int result = reviewService.InsertReview(review);
 		
@@ -61,5 +87,18 @@ public class ReviewController {
 		}
 			model.addAttribute(new Restaurant());
 			return "mainpage";
+	}
+	
+	
+	private int ReviewID() {
+		Random random = new Random();
+		int n = random.nextInt(100) + 4;
+		return n;
+	}
+	
+	private LocalDate GetCurrentDate() {
+		java.util.Date date = new java.util.Date();
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return localDate;
 	}
 }
