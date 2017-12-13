@@ -78,6 +78,10 @@
 		SELECT RName, Phone, Email, hours, diningtype, streetno, streetname, city, state, pricerange, deliveryflag from RESTAURANT WHERE RName = #{RName}
 	</select>
 	 
+	<select id="selectReviewsByEmail" resultMap="Review">
+		SELECT reviewtitle, reviewdescr, rating FROM CUST_REVIEW WHERE custemail = #{custEmail} 
+	</select>
+	 
 	<insert id="insertReview" parameterType="Review">
 		INSERT INTO CUST_REVIEW (ReviewID, custEmail, RestID, ReviewTitle, ReviewDescr, ReviewDate, Rating) VALUES (#{ReviewID},#{custEmail},#{RestID},#{ReviewTitle},#{ReviewDescr},#{ReviewDate},#{Rating})
 	</insert>	

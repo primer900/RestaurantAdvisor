@@ -42,6 +42,8 @@ public class ReviewController {
 	public String newReview(
 			@ModelAttribute("review") Review review,
 			@ModelAttribute("rlist") ArrayList<Restaurant> rlist,
+			@ModelAttribute("reviewList") ArrayList<Review> reviewList,
+			@ModelAttribute("customer") Customer customer,
 			Model model) {
 		
 		Review r = new Review();
@@ -51,6 +53,8 @@ public class ReviewController {
 		model.addAttribute("rlist", rlist);
 		
 
+		reviewList = (ArrayList<Review>) reviewService.SelectReviewsByCustEmail(customer.getEmail());
+		logger.info("Review 1 " + reviewList.get(0).getReviewTitle());
 		
 		return "restaurantReviewList";
 	}

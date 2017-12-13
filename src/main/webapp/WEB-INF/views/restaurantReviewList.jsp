@@ -23,5 +23,11 @@
 <c:forEach var="r" items="${rlist}">
    <a href="/app/restaurantReview?restID=${r.getRestID() }"><c:out value="${r.getRName()}"/><h3></a>
 </c:forEach>
+
+<br>
+
+<c:forEach var="review" items="${reviewList}">
+	<p><c:out value="${review.getReviewTitle()}"></c:out></p>
+</c:forEach>
 </body>
 </html>
